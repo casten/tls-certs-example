@@ -6,7 +6,9 @@ This is an example Bash script that shows the creation of a root cert (self-sign
 
 Cert generation and testing use OpenSSL.
 
+## Usage
 To use it, source example.sh.
+# 
 
 |Note|
 |:---|
