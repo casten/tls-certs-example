@@ -6,7 +6,8 @@ if ! [[ $_ != $0 ]]; then
 fi 
 
 #clean up any preexisting generated files
-find . ! -name '*.sh' ! -name '.git' ! -name '.' ! -name '..' ! -name '*.cnf' -type f,d -exec rm -rf {} +
+find . -name ".git" -prune -o -name "*" ! -name *.cnf ! -name *.sh ! -name "." ! -name "*.md" -exec rm -rf {} +
+
 #and servers
 killall openssl -q
 
