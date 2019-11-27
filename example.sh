@@ -50,8 +50,8 @@ openssl x509 -req -days 3600 -in client_chained.csr -CA ../client_intermediate/c
 cd ..
 
 
-#start server in bg, use intermediate cert, point to client_ca for client auth and require client auth up to 1 level deep
-openssl s_server --accept 8443 --cert ./intermediate/intermediate.crt --key ./intermediate/intermediate.key -CAfile ./client_intermediate/client_intermediate.ca -Verify 1 > server_out &
+#start server in bg, use chained cert, point to client_ca for client auth and require client auth up to 2 level deep
+openssl s_server --accept 8443 --cert ./chained/chained.crt --key ./chained/chained.key -CAfile ./client_intermediate/client_intermediate.ca -Verify 2 > server_out &
 
 #send a message verifying server idenity via intermediate.ca file, send up client cert
 echo "Looking good Billy Ray!" | openssl s_client --connect localhost:8443 --CAfile ./intermediate/intermediate.ca --cert ./client_chained/client_chained.crt --key ./client_chained/client_chained.key
