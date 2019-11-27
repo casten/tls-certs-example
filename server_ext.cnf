@@ -1,0 +1,11 @@
+[req]
+req_extensions = v3_req
+distinguished_name = dn
+
+[dn]
+
+[v3_req]
+basicConstraints=CA:FALSE,pathlen:2
+extendedKeyUsage=serverAuth
+keyUsage=critical, digitalSignature 
+
